@@ -59,7 +59,7 @@ class GameViewController: UIViewController {
         scnView.showsStatistics = true
         
         // configure the view
-        scnView.backgroundColor = UIColor.black
+        scnView.backgroundColor = UIColor.systemFill
         
         // add a tap gesture recognizer
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
@@ -90,14 +90,17 @@ class GameViewController: UIViewController {
             SCNTransaction.completionBlock = {
                 SCNTransaction.begin()
                 SCNTransaction.animationDuration = 0.5
-                
-                material.emission.contents = UIColor.black
-                
                 SCNTransaction.commit()
             }
-            
-            material.emission.contents = UIColor.red
-            
+            let node = result.node as! Cell
+            switch node.estado {
+            case .alive:
+                material.diffuse.contents = UIColor.systemPurple
+                node.estado = .dead
+            default:
+                material.diffuse.contents = UIColor.systemBlue
+                node.estado = .alive
+            }
             SCNTransaction.commit()
         }
     }

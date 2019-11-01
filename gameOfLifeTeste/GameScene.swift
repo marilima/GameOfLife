@@ -10,20 +10,22 @@ import Foundation
 import SceneKit
 
 class GameScene: SCNScene {
+    
+    let offset: Int = 10
+    let tamanho: Int = 50
+    
     override init() {
+        
         super.init()
-        for xIndex: Int in 0...32 {
-            for yIndex: Int in 0...32 {
-                let geometry = SCNBox(width: 0.6, height: 0.6, length: 0.1, chamferRadius: 0.005)
-                    geometry.firstMaterial?.diffuse.contents = UIColor.red
-                    geometry.firstMaterial?.specular.contents = UIColor.systemPink
-                    geometry.firstMaterial?.emission.contents = UIColor.blue
-                    let boxNode = SCNNode(geometry: geometry)
-                    let offSet: Int = 16
-                let boxCopy = boxNode.copy() as! SCNNode
-                    boxCopy.position.x = Float(xIndex - offSet)
-                    boxCopy.position.y = Float(yIndex - offSet)
-                self.rootNode.addChildNode(boxCopy)
+        for x in 0...tamanho-1 {
+            var row = [Cell]()
+            for y in 0...tamanho-1 {
+                let cell = Cell()
+                cell.position.x = Float(x - offset)
+                cell.position.y = Float(y - offset)
+                row.append(cell)
+                self.rootNode.addChildNode(cell)
+                
             }
         }
     }

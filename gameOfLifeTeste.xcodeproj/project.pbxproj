@@ -14,9 +14,7 @@
 		8752A99D236B785900186F6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8752A99C236B785900186F6D /* Assets.xcassets */; };
 		8752A9A0236B785900186F6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8752A99E236B785900186F6D /* LaunchScreen.storyboard */; };
 		8752A9A8236B790A00186F6D /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8752A9A7236B790A00186F6D /* GameScene.swift */; };
-		8752A9AA236B7E3100186F6D /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8752A9A9236B7E3100186F6D /* State.swift */; };
 		8752A9AC236B7F9700186F6D /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8752A9AB236B7F9700186F6D /* Cell.swift */; };
-		8752A9AE236B806F00186F6D /* Life.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8752A9AD236B806F00186F6D /* Life.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,9 +27,7 @@
 		8752A99F236B785900186F6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8752A9A1236B785900186F6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8752A9A7236B790A00186F6D /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		8752A9A9236B7E3100186F6D /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		8752A9AB236B7F9700186F6D /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
-		8752A9AD236B806F00186F6D /* Life.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Life.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,9 +63,7 @@
 				8752A993236B785700186F6D /* AppDelegate.swift */,
 				8752A995236B785700186F6D /* art.scnassets */,
 				8752A997236B785700186F6D /* GameViewController.swift */,
-				8752A9A9236B7E3100186F6D /* State.swift */,
 				8752A9AB236B7F9700186F6D /* Cell.swift */,
-				8752A9AD236B806F00186F6D /* Life.swift */,
 				8752A9A7236B790A00186F6D /* GameScene.swift */,
 				8752A999236B785700186F6D /* Main.storyboard */,
 				8752A99C236B785900186F6D /* Assets.xcassets */,
@@ -154,9 +148,7 @@
 				8752A9A8236B790A00186F6D /* GameScene.swift in Sources */,
 				8752A998236B785700186F6D /* GameViewController.swift in Sources */,
 				8752A9AC236B7F9700186F6D /* Cell.swift in Sources */,
-				8752A9AE236B806F00186F6D /* Life.swift in Sources */,
 				8752A994236B785700186F6D /* AppDelegate.swift in Sources */,
-				8752A9AA236B7E3100186F6D /* State.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
