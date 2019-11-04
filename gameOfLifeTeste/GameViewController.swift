@@ -10,7 +10,7 @@ import UIKit
 import QuartzCore
 import SceneKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, SCNNodeRendererDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,6 +103,9 @@ class GameViewController: UIViewController {
             }
             SCNTransaction.commit()
         }
+    }
+    func renderNode(_ node: SCNNode, renderer: SCNRenderer, arguments: [String : Any]) {
+//        
     }
     
     override var shouldAutorotate: Bool {
