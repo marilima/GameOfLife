@@ -21,8 +21,8 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </sceneKitView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aEp-eT-psy">
-                                <rect key="frame" x="20" y="782" width="201" height="39"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <rect key="frame" x="166" y="775" width="228" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="PRÓXIMA GERAÇÃO">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -33,9 +33,9 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
-                            <constraint firstItem="aEp-eT-psy" firstAttribute="leading" secondItem="7S4-FT-wGa" secondAttribute="leading" constant="20" id="Hqy-6z-hSZ"/>
-                            <constraint firstItem="7S4-FT-wGa" firstAttribute="bottom" secondItem="aEp-eT-psy" secondAttribute="bottom" constant="41" id="Ima-EW-7GN"/>
-                            <constraint firstItem="7S4-FT-wGa" firstAttribute="trailing" secondItem="aEp-eT-psy" secondAttribute="trailing" constant="193" id="qIa-XO-6Jm"/>
+                            <constraint firstItem="7S4-FT-wGa" firstAttribute="bottom" secondItem="aEp-eT-psy" secondAttribute="bottom" constant="45" id="Hwy-OH-9Ou"/>
+                            <constraint firstItem="7S4-FT-wGa" firstAttribute="trailing" secondItem="aEp-eT-psy" secondAttribute="trailing" constant="20" id="eSc-5H-LDl"/>
+                            <constraint firstItem="aEp-eT-psy" firstAttribute="leading" secondItem="7S4-FT-wGa" secondAttribute="leading" constant="166" id="rT2-QQ-tRh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7S4-FT-wGa"/>
                     </view>

@@ -19,7 +19,7 @@ class GameViewController: UIViewController {
     
     @IBOutlet weak var scnView: SCNView!
     @IBAction func playButton(_ sender: Any) {
-        scene2?.printGrid()
+//        scene2?.printGrid()
         scene2?.updateGrid()
         placesBox()
     }

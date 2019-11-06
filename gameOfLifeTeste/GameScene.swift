@@ -13,13 +13,14 @@ import QuartzCore
 
 class GameScene {
     var grid : [[Cell]]
+    var generation: Int
     var offset: Int = 5
     var tamanho: Int = 8
     
     init(tamanho: Int) {
 //        self.offset = offset
 //        self.tamanho = tamanho
-        
+        self.generation = 0
         grid = [[Cell]]()
         for x in 0...tamanho - 1 {
             grid.append([Cell]())
@@ -76,10 +77,11 @@ class GameScene {
                     
                 }
                 newGrid[i].append(newCell)
+                self.generation += 1
             }
         }
         grid = newGrid
-        printGrid()
+//        printGrid()
     }
     
     func printGrid(){
@@ -95,14 +97,4 @@ class GameScene {
         }
         print("")
     }
-    
-    
-    
-    //      func addNewRules(){
-    //       rules.append(Rule(initialCellStatus: .alive, finalCellStatus: .dead, minCellNeighbours: 0, maxCellNeighbours: 1))
-    //        rules.append(Rule(initialCellStatus: .alive, finalCellStatus: .dead, minCellNeighbours: 4, maxCellNeighbours: 8))
-    //       rules.append(Rule(initialCellStatus: .alive, finalCellStatus: .alive, minCellNeighbours: 2, maxCellNeighbours: 3))
-    //        rules.append(Rule(initialCellStatus: .dead, finalCellStatus: .alive, minCellNeighbours: 3, maxCellNeighbours: 3))
-    //      }
-    
 }
