@@ -38,11 +38,10 @@ class GameScene {
         while i <= cell.position.x + 1 {
             var j = cell.position.y - 1
             while Int(j) <= Int(cell.position.y + 1) {
-                if !(cell.position.x == i && cell.position.y != j) && i > 0 && j >= 0  && Int(j) < tamanho && Int(i) < tamanho {
+                if !(cell.position.x == i && cell.position.y == j) && i >= 0 && j >= 0  && Int(j) < tamanho && Int(i) < tamanho {
                     
-                    if cell.estado == .alive {
+                    if grid[i][j].estado == .alive {
                         counterVizinho = counterVizinho + 1
-                        cell.aliveNeighbours = counterVizinho
                     }
                     
                 }
@@ -50,6 +49,7 @@ class GameScene {
             }
             i += 1
         }
+        cell.aliveNeighbours = counterVizinho
         return counterVizinho
     }
     
@@ -65,13 +65,13 @@ class GameScene {
                 
                 let newCell = cell.copyCell()
                 
-                if cell.estado == .alive {
+                if newCell.estado == .alive {
                     if count <= 1 || count >= 4 {
-                        cell.estado = .dead
+                        newCell.estado = .dead
                     }
                 }  else {
                     if count == 3 {
-                        cell.estado = .alive
+                        newCell.estado = .alive
                     }
                     
                 }
@@ -86,13 +86,14 @@ class GameScene {
         for i in 0..<tamanho {
             for j in 0..<tamanho {
                 if grid[i][j].estado == .alive {
-                    print("1", separator: "", terminator: "")
+                    print("1", separator: "", terminator: " ")
                 } else {
-                    print("0", separator: "", terminator: "")
+                    print("0", separator: "", terminator: " ")
                 }
             }
             print("")
         }
+        print("")
     }
     
     
