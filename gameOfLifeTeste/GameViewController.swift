@@ -10,59 +10,36 @@ import UIKit
 import QuartzCore
 import SceneKit
 
-class GameViewController: UIViewController, SCNNodeRendererDelegate {
+class GameViewController: UIViewController {
     
-     let scene = SCNScene()
     var scene2: GameScene?
+    
+    var cameraNode: SCNNode!
+    var gridBoxes: [[SCNNode?]] = []
+    
     @IBOutlet weak var scnView: SCNView!
     @IBAction func playButton(_ sender: Any) {
         scene2?.updateGrid()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let scnView = self.view as! SCNView
-        scnView.delegate = self as! SCNSceneRendererDelegate
-        // create and add a camera to the scene
-        let cameraNode = SCNNode()
-        cameraNode.camera = SCNCamera()
-        scene.rootNode.addChildNode(cameraNode)
         
-        // place the camera
-        cameraNode.position = SCNVector3(x: 0, y: 0, z: 15)
+         let scene = SCNScene()
         
-        // create and add a light to the scene
-        let lightNode = SCNNode()
-        lightNode.light = SCNLight()
-        lightNode.light!.type = .omni
-        lightNode.position = SCNVector3(x: 0, y: 10, z: 10)
-        scene.rootNode.addChildNode(lightNode)
-        
-        // create and add an ambient light to the scene
-        let ambientLightNode = SCNNode()
-        ambientLightNode.light = SCNLight()
-        ambientLightNode.light!.type = .ambient
-        ambientLightNode.light!.color = UIColor.darkGray
-        scene.rootNode.addChildNode(ambientLightNode)
-        
-        
-        let geometry = SCNSphere(radius: 0.5)
-        let botao = SCNNode()
-        botao.geometry = geometry
-        scene.rootNode.addChildNode(botao)
-        // retrieve the ship node
-        //        let ship = scene.rootNode.childNode(withName: "ship", recursively: true)!
-        //
-        //        // animate the 3d object
-        //        ship.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 1)))
-        
-        // set the scene to the view
-        scnView.scene = scene
+            scnView.scene = scene
+          scene2 = GameScene(tamanho: 32)
+        scnView.pointOfView?.position = SCNVector3Make(0, 0, 0)
+        setupLight(rootNode: scene.rootNode)
+        setupCamera(rootNode: scene.rootNode)
+        setupSphere(rootNode: scene.rootNode)
+        createGrid(rootNode: scene.rootNode)
         
         // allows the user to manipulate the camera
         scnView.allowsCameraControl = true
         
         // show statistics such as fps and timing information
-        scnView.showsStatistics = true
+        scnView.showsStatistics = false
         
         // configure the view
         scnView.backgroundColor = UIColor.systemFill
@@ -71,7 +48,53 @@ class GameViewController: UIViewController, SCNNodeRendererDelegate {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         scnView.addGestureRecognizer(tapGesture)
     }
-    
+    //      funcao de arrumar a camera
+            func setupCamera(rootNode: SCNNode) {
+                cameraNode = SCNNode()
+                cameraNode.camera = SCNCamera()
+                cameraNode.position = SCNVector3(x: 0, y: 0, z: 60)
+                rootNode.addChildNode(cameraNode)
+            }
+    //      funcao de colocar a luz e ambiente
+            func setupLight(rootNode: SCNNode) {
+                let lightNode = SCNNode()
+                lightNode.light = SCNLight()
+                lightNode.light!.type = .omni
+                lightNode.position = SCNVector3(x: 0, y: 10, z: 10)
+                rootNode.addChildNode(lightNode)
+                
+                let ambientLightNode = SCNNode()
+                ambientLightNode.light = SCNLight()
+                ambientLightNode.light!.type = .ambient
+                ambientLightNode.light!.color = UIColor.darkGray
+                rootNode.addChildNode(ambientLightNode)
+            }
+    //      funcao que adiciona a esfera e a animacao
+            func setupSphere(rootNode: SCNNode) {
+                let geometry = SCNSphere(radius: 0.5)
+                let botao = SCNNode()
+                botao.geometry = geometry
+                botao.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 1)))
+                rootNode.addChildNode(botao)
+            }
+    func createBox(x: Int, y: Int, tamanho: Int) -> SCNNode {
+        let boxNode = SCNNode(geometry: Box.shared.geometryAlive)
+        boxNode.position.x = Float(x - tamanho/2)
+        boxNode.position.y = Float(y - tamanho/2)
+        boxNode.position.z = 0.5
+        
+        return boxNode
+    }
+    func createGrid(rootNode: SCNNode) {
+        guard let grid = self.scene2 else {
+            return }
+        for i in 0..<grid.tamanho {
+            self.gridBoxes.append([SCNNode]())
+            for _ in 0..<grid.tamanho {
+                self.gridBoxes[i].append(nil)
+            }
+        }
+    }
     @objc
     func handleTap(_ gestureRecognize: UIGestureRecognizer) {
         // retrieve the SCNView

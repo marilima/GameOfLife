@@ -18,8 +18,6 @@ class Cell {
         estado = .dead
         position = (x,y)
         aliveNeighbours = 0
-        //        let geometry = SCNBox(width: 0.5, height: 0.5, length: 0.08, chamferRadius: 0.005)
-        //        self.geometry = geometry
     }
     func copyCell() -> Cell {
         let newCell = Cell(x: position.x, y: position.y)
@@ -34,4 +32,12 @@ enum State {
     case dead
 }
 
+class Box {
+    static let shared = Box()
+    
+    private init() {}
+    
+    var geometryAlive = SCNBox(width: 0.5, height: 0.5, length: 0.08, chamferRadius: 0.005)
+    
+}
 

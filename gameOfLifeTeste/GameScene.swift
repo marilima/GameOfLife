@@ -13,15 +13,13 @@ import QuartzCore
 
 class GameScene {
     var grid : [[Cell]]
-    var newGrid:  [Cell]
+    var offset: Int = 5
+    var tamanho: Int = 8
     
-    var offset: Int
-    let tamanho: Int
-    var size: Int
-    
-    init(offset: Int, tamanho: Int) {
-        self.offset = 5
-        self.tamanho = 8 
+    init(tamanho: Int) {
+//        self.offset = offset
+//        self.tamanho = tamanho
+        
         grid = [[Cell]]()
         for x in 0...tamanho - 1 {
             grid.append([Cell]())
