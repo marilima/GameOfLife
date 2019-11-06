@@ -12,21 +12,24 @@ import SceneKit
 
 class Rule: SCNScene {
     
+    var initialCellStatus : State
+    var finalCellStatus : State
+    var minCellNeighbours : Int
+    var maxCellNeighbours : Int
+    
     init(initialCellStatus: State, finalCellStatus: State, minCellNeighbours: Int, maxCellNeighbours: Int) {
+        self.initialCellStatus = initialCellStatus
+        self.finalCellStatus = finalCellStatus
+        self.minCellNeighbours = minCellNeighbours
+        self.maxCellNeighbours = maxCellNeighbours
         
-        var initialCellStatus = initialCellStatus
-        var finalCellStatus = finalCellStatus
-        var minCellNeighbours = minCellNeighbours
-        var maxCellNeighbours = maxCellNeighbours
         super.init()
     }
-    required init?(coder aDeCoder: NSCoder) {
-        super.init(coder: aDeCoder)
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-    
-    func checkNeighbours() {
-        
-    }
-    
-    
+//    func checkNeighbours(cell: Cell) {
+// 
+//        }
 }

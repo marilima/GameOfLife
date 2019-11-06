@@ -11,13 +11,17 @@ import QuartzCore
 import SceneKit
 
 class GameViewController: UIViewController, SCNNodeRendererDelegate {
-
+    
+     let scene = SCNScene()
+    var scene2: GameScene?
+    @IBOutlet weak var scnView: SCNView!
+    @IBAction func playButton(_ sender: Any) {
+        scene2?.updateGrid()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // create a new scene
-        let scene = GameScene()
-        
+        let scnView = self.view as! SCNView
+        scnView.delegate = self as! SCNSceneRendererDelegate
         // create and add a camera to the scene
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
@@ -40,14 +44,16 @@ class GameViewController: UIViewController, SCNNodeRendererDelegate {
         ambientLightNode.light!.color = UIColor.darkGray
         scene.rootNode.addChildNode(ambientLightNode)
         
+        
+        let geometry = SCNSphere(radius: 0.5)
+        let botao = SCNNode()
+        botao.geometry = geometry
+        scene.rootNode.addChildNode(botao)
         // retrieve the ship node
-//        let ship = scene.rootNode.childNode(withName: "ship", recursively: true)!
-//
-//        // animate the 3d object
-//        ship.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 1)))
-//
-        // retrieve the SCNView
-        let scnView = self.view as! SCNView
+        //        let ship = scene.rootNode.childNode(withName: "ship", recursively: true)!
+        //
+        //        // animate the 3d object
+        //        ship.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 1)))
         
         // set the scene to the view
         scnView.scene = scene
@@ -69,7 +75,6 @@ class GameViewController: UIViewController, SCNNodeRendererDelegate {
     @objc
     func handleTap(_ gestureRecognize: UIGestureRecognizer) {
         // retrieve the SCNView
-        let scnView = self.view as! SCNView
         
         // check what nodes are tapped
         let p = gestureRecognize.location(in: scnView)
@@ -92,22 +97,19 @@ class GameViewController: UIViewController, SCNNodeRendererDelegate {
                 SCNTransaction.animationDuration = 0.5
                 SCNTransaction.commit()
             }
-            let node = result.node as! Cell
-            switch node.estado {
-            case .alive:
-                material.diffuse.contents = UIColor.systemPurple
-                node.estado = .dead
-            default:
-                material.diffuse.contents = UIColor.systemBlue
-                node.estado = .alive
+            if let node = result.node as? Cell {
+                switch node.estado {
+                case .alive:
+                    material.diffuse.contents = UIColor.systemPurple
+                    node.estado = .dead
+                default:
+                    material.diffuse.contents = UIColor.systemBlue
+                    node.estado = .alive
+                }
+                SCNTransaction.commit()
             }
-            SCNTransaction.commit()
         }
     }
-    func renderNode(_ node: SCNNode, renderer: SCNRenderer, arguments: [String : Any]) {
-//        
-    }
-    
     override var shouldAutorotate: Bool {
         return true
     }
@@ -123,5 +125,4 @@ class GameViewController: UIViewController, SCNNodeRendererDelegate {
             return .all
         }
     }
-
 }

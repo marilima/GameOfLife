@@ -9,22 +9,29 @@
 import Foundation
 import SceneKit
 
+class Cell {
+    var estado: State?
+    var aliveNeighbours: Int
+    var position: (x: Int, y: Int)
+    
+    init(x: Int, y: Int) {
+        estado = .dead
+        position = (x,y)
+        aliveNeighbours = 0
+        //        let geometry = SCNBox(width: 0.5, height: 0.5, length: 0.08, chamferRadius: 0.005)
+        //        self.geometry = geometry
+    }
+    func copyCell() -> Cell {
+        let newCell = Cell(x: position.x, y: position.y)
+        newCell.aliveNeighbours = aliveNeighbours
+        newCell.estado = estado
+        return newCell
+    }
+}
+
 enum State {
     case alive
     case dead
 }
-class Cell: SCNNode {
-    var estado: State?
 
-    override init() {
-        super.init()
-        self.estado = .dead
-        
-        let geometry = SCNBox(width: 0.6, height: 0.6, length: 0.1, chamferRadius: 0.005)
-        self.geometry = geometry
-    }
-    required init?(coder aDeCoder: NSCoder) {
-        super.init(coder: aDeCoder)
-    }
-}
 
