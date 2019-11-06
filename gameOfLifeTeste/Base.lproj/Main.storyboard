@@ -20,19 +20,23 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </sceneKitView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aEp-eT-psy">
-                                <rect key="frame" x="20" y="782" width="52" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aEp-eT-psy">
+                                <rect key="frame" x="20" y="782" width="201" height="39"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="PLAY">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" title="PRÓXIMA GERAÇÃO">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="playButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="90I-IZ-PWd"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstItem="aEp-eT-psy" firstAttribute="leading" secondItem="7S4-FT-wGa" secondAttribute="leading" constant="20" id="Hqy-6z-hSZ"/>
+                            <constraint firstItem="7S4-FT-wGa" firstAttribute="bottom" secondItem="aEp-eT-psy" secondAttribute="bottom" constant="41" id="Ima-EW-7GN"/>
+                            <constraint firstItem="7S4-FT-wGa" firstAttribute="trailing" secondItem="aEp-eT-psy" secondAttribute="trailing" constant="193" id="qIa-XO-6Jm"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="7S4-FT-wGa"/>
                     </view>
                     <connections>

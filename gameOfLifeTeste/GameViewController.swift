@@ -34,14 +34,13 @@ class GameViewController: UIViewController {
         scnView.pointOfView?.position = SCNVector3Make(0, 0, 0)
         setupLight(rootNode: scene.rootNode)
         setupCamera(rootNode: scene.rootNode)
-        setupSphere(rootNode: scene.rootNode)
         createGrid(rootNode: scene.rootNode)
         for i in gridBoxes {
             for j in i {
                 scene.rootNode.addChildNode(j ?? SCNNode())
             }
         }
-        Box.shared.setColors(deadColor: .blue, aliveColor: .systemRed)
+        Box.shared.setColors(deadColor: .systemBlue, aliveColor: .systemRed)
         // allows the user to manipulate the camera
         scnView.allowsCameraControl = true
         
@@ -77,15 +76,6 @@ class GameViewController: UIViewController {
         ambientLightNode.light!.type = .ambient
         ambientLightNode.light!.color = UIColor.darkGray
         rootNode.addChildNode(ambientLightNode)
-    }
-    
-    //      funcao que adiciona a esfera e a animacao
-    func setupSphere(rootNode: SCNNode) {
-        let geometry = SCNSphere(radius: 0.5)
-        let botao = SCNNode()
-        botao.geometry = geometry
-        botao.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 1)))
-        rootNode.addChildNode(botao)
     }
     
     func createBox(x: Int, y: Int, tamanho: Int) -> SCNNode {
@@ -137,9 +127,9 @@ class GameViewController: UIViewController {
             let index = findCell(node: result.node)
             let cell = scene2?.grid[index.i][index.j]
             
-            // get its material
-            let material = result.node.geometry!.firstMaterial!
-            
+//            // get its material
+//            let material = result.node.geometry!.firstMaterial!
+//            
             // highlight it
             SCNTransaction.begin()
             SCNTransaction.animationDuration = 0.5
